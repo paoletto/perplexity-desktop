@@ -59,5 +59,41 @@
   // --- Restore saved width on load ---
   const saved = localStorage.getItem('sidebarWidth');
   if (saved) applySidebarWidth(parseInt(saved));
+// --- Scrollbar styling ---
+  const scrollbarStyle = document.createElement('style');
+  scrollbarStyle.textContent = `
+    .scrollbar-none {
+      scrollbar-width: auto !important;
+    }
+    .scrollbar-none::-webkit-scrollbar {
+      display: block !important;
+      width: 14px !important;
+    }
+    ::-webkit-scrollbar {
+      width: 14px !important;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1a2e !important;
+      border-radius: 8px !important;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #20B8CD !important;
+      border-radius: 8px !important;
+      border: 3px solid #1a1a2e !important;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2ed8f0 !important;
+    }
+    .scrollable-container {
+      scrollbar-color: #20B8CD #1a1a2e !important;
+    }
+    .scrollable-container::-webkit-scrollbar-track {
+      margin-bottom: 140px !important;
+    }
+    [class*="36px"] {
+      box-shadow: none !important;
+    }
+  `;
+  document.head.appendChild(scrollbarStyle);
 
 })();
